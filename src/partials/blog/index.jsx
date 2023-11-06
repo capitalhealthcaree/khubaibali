@@ -4,7 +4,7 @@ It retrieves blog post data from the MDX files and passes it through context to 
 It also handles the lightbox state and dispatching actions
 */
 
-import { createContext, useReducer, useState } from 'react'
+import { useState } from 'react'
 import SectionWrapper from 'root/src/components/section-wrapper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
@@ -20,9 +20,6 @@ import dayjs from 'dayjs'
 import styled from './style'
 
 // Define where the MDX files are located
-
-// Create a Context for passing data between components
-const Context = createContext({})
 
 // Renders a preview card for each blog post
 const Post = ({ data }) => {
@@ -242,62 +239,21 @@ Renders selected post content
 Main Blog component page.
 Handles data fetching, context and lightbox state.
 */
-const Blog = (props) => {
-  // Destructure props
-  const { data, ...otherProps } = props
-
-  // Initial state
-  const initialState = {
-    show: false,
-    data: false,
-  }
-
-  // State reducer
-  const stateReducer = (state, action) => {
-    switch (action.type) {
-      // Set data and show lightbox
-      case 'data':
-        if (action.data) return { ...state, show: true, data: action.data }
-        return { ...state, show: false }
-
-      // Toggle lightbox show
-      case 'show':
-        return { ...state, show: action.show }
-
-      default:
-        return state
-    }
-  }
-
-  // State and dispatch from useReducer
-  const [state, dispatch] = useReducer(stateReducer, initialState)
-
-  // Context data
-  const contextData = {
-    fetchedData: data,
-    state,
-    dispatch,
-  }
-
-  return (
-    <SectionWrapper
-      headerData={{
-        title: 'My Blog',
-        description: 'Check out my latest blog posts',
-      }}
-      altBg={false}
-      {...otherProps}
-    >
-      <Row>
-        <Col xs='12'>
-          {/* Provide context */}
-          <Context.Provider value={contextData}>
-            <PostsList />
-          </Context.Provider>
-        </Col>
-      </Row>
-    </SectionWrapper>
-  )
-}
+const Blog = () => (
+  <SectionWrapper
+    headerData={{
+      title: 'My Blog',
+      description: 'Check out my latest blog posts',
+    }}
+    altBg={false}
+  >
+    <Row>
+      <Col xs='12'>
+        {/* Provide context */}
+        <PostsList />
+      </Col>
+    </Row>
+  </SectionWrapper>
+)
 
 export default Blog
