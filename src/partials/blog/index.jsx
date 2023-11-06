@@ -214,26 +214,21 @@ const PostsList = () => {
   )
 }
 
-const Blog = (props) => {
-  // Destructure props
-  const { data, ...otherProps } = props
-
-  return (
-    <SectionWrapper
-      headerData={{
-        title: 'My Blog',
-        description: 'Check out my latest blog posts',
-      }}
-      altBg={false}
-      {...otherProps}
-    >
-      <Row>
-        <Col xs='12'>
-          <PostsList />
-        </Col>
-      </Row>
-    </SectionWrapper>
-  )
-}
+const Blog = () => (
+  <SectionWrapper
+    headerData={{
+      title: 'My Blog',
+      description: 'Check out my latest blog posts',
+    }}
+    altBg={false}
+    // {...otherProps}
+  >
+    <Row>
+      <Col xs='12'>
+        <PostsList />
+      </Col>
+    </Row>
+  </SectionWrapper>
+)
 
 export default Blog
