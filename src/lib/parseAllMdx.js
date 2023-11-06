@@ -4,7 +4,7 @@ It compiles the MDX code and processes the Frontmatter object for later use Addi
 */
 
 import fs from 'fs'
-// import path from 'path'
+import path from 'path'
 import { serialize } from 'next-mdx-remote/serialize'
 import { globby } from 'globby'
 import sharp from 'sharp'
@@ -138,33 +138,34 @@ const parseAllMdx = async (dir) => {
         .parseAsync(frontmatter)
 
     // Get file promises
-    const filePromises = await globby(`./${dir}`).then((fileList) =>
-      fileList.map(async (file) =>
-        fs.promises
-          .readFile(file, {
-            encoding: 'utf8',
-          })
+    const filePromises = await globby(path.join(process.cwd(), dir)).then(
+      (fileList) =>
+        fileList.map(async (file) =>
+          fs.promises
+            .readFile(file, {
+              encoding: 'utf8',
+            })
 
-          // Get content and frontmatter
-          .then(async (content) => {
-            const frontmatter = matter(content).data
+            // Get content and frontmatter
+            .then(async (content) => {
+              const frontmatter = matter(content).data
 
-            return {
-              content,
-              frontmatter: await frontmatterBuilder(frontmatter),
-            }
-          })
+              return {
+                content,
+                frontmatter: await frontmatterBuilder(frontmatter),
+              }
+            })
 
-          // Serialize with frontmatter
-          .then(({ content, frontmatter }) =>
-            serialize(content, {
-              parseFrontmatter: true,
-              scope: {
-                frontmatter,
-              },
-            }),
-          ),
-      ),
+            // Serialize with frontmatter
+            .then(({ content, frontmatter }) =>
+              serialize(content, {
+                parseFrontmatter: true,
+                scope: {
+                  frontmatter,
+                },
+              }),
+            ),
+        ),
     )
 
     // Return promises

@@ -1,3 +1,7 @@
+/*
+This is the footer section
+*/
+
 import { Col, Row } from 'react-bootstrap'
 import * as icons from '@swiftcarrot/react-ionicons'
 import { css } from '@emotion/react'
@@ -49,58 +53,37 @@ const Footer = (props) => (
       <SingleBlock
         Icon={icons.MapSharp}
         content={
-          <a href='https://maps.app.goo.gl/sTnrnFmTftzimCN57' target='_blank'>
-            Wapda town, Lahore 54000, Pakistan
+          <a href='https://goo.gl/maps/2YAGiugG47VAS17g7' target='_blank'>
+            4155, Liverpool, United Kingdom.
           </a>
         }
         cols={{ xs: '12', sm: '4' }}
       />
       <SingleBlock
         Icon={icons.CallSharp}
-        content={<a href='tel:+923219447416'>( +92 ) 321 944 74 16</a>}
+        content={<a href='tel:+441632967704'>+44 1632 967704</a>}
         cols={{ xs: '12', sm: '4' }}
       />
       <SingleBlock
         Icon={icons.SendSharp}
-        content={
-          <a href='mailto:Khubaibali327@gmail.com'>Khubaibali327@gmail.com</a>
-        }
+        content={<a href='mailto:alex@example.com'>alex@example.com</a>}
         cols={{ xs: '12', sm: '4' }}
       />
     </Row>
     {/* List social media icons and copyright notice */}
     <Row className='_row _mini'>
       <Col xs='12' lg='5' className='_socials'>
-        <SocialIcon
-          url='https://x.com/KhubaibAli26?t=hGYhf3rABES1xkO3_dKpbw&s=08'
-          Icon={icons.LogoTwitter}
-          color='#1DA1F2'
-        />
-        <SocialIcon
-          url='https://instagram.com/khubaibalii?igshid=OGQ5ZDc2ODk2ZA=='
-          Icon={icons.LogoInstagram}
-          color='#C32361'
-        />
-        <SocialIcon
-          url='https://www.linkedin.com/in/khubaib-ali?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
-          Icon={icons.LogoLinkedin}
-          color='#0077B5'
-        />
-        {/* <SocialIcon url='#0' Icon={icons.LogoYoutube} color='#c33a38' />
-        <SocialIcon url='#0' Icon={icons.LogoGithub} color='#6e5494' /> */}
-        <SocialIcon
-          url='https://www.facebook.com/khubaibalii?mibextid=ZbWKwL'
-          Icon={icons.LogoFacebook}
-          color='#3B5998'
-        />
+        <SocialIcon url='#0' Icon={icons.LogoTwitter} color='#1DA1F2' />
+        <SocialIcon url='#0' Icon={icons.LogoInstagram} color='#C32361' />
+        <SocialIcon url='#0' Icon={icons.LogoLinkedin} color='#0077B5' />
+        <SocialIcon url='#0' Icon={icons.LogoYoutube} color='#c33a38' />
+        <SocialIcon url='#0' Icon={icons.LogoGithub} color='#6e5494' />
+        <SocialIcon url='#0' Icon={icons.LogoFacebook} color='#3B5998' />
       </Col>
       <Col as='p' xs='12' lg='7' className='_copyright-notice'>
-        Copyright © 2023 , all rights reserved. Developed by{' '}
-        <a
-          href='https://www.linkedin.com/in/muhammad-hassan-sadiq-a902941a1'
-          target='_blank'
-        >
-          Muhammad Hasssan
+        Copyright © 2023 CodeX, all rights reserved. Developed by{' '}
+        <a href='https://themeforest.net/user/exill' target='_blank'>
+          Exill
         </a>
         .
       </Col>
