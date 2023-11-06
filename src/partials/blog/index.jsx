@@ -1,9 +1,3 @@
-/*
-This is the Blog section
-It retrieves blog post data from the MDX files and passes it through context to other components
-It also handles the lightbox state and dispatching actions
-*/
-
 import { useState } from 'react'
 import SectionWrapper from 'root/src/components/section-wrapper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -18,8 +12,6 @@ import { cx } from '@emotion/css'
 import dayjs from 'dayjs'
 // import Lightbox from 'root/src/components/lightbox'
 import styled from './style'
-
-// Define where the MDX files are located
 
 // Renders a preview card for each blog post
 const Post = ({ data }) => {
@@ -84,13 +76,7 @@ const Post = ({ data }) => {
   )
 }
 
-/*
-Renders a swiper component to display blog post cards
-Handles navigation between posts
-*/
 const PostsList = () => {
-  // Get fetched data from context
-  // const { fetchedData } = useContext(Context)
   const fetchedData = [
     {
       title: 'sdas00',
@@ -225,20 +211,6 @@ const PostsList = () => {
   )
 }
 
-/*
-Layout for post content in lightbox modal
-Renders title, summary and MDX content
-*/
-
-/*
-Main lightbox modal component
-Renders selected post content
-*/
-
-/*
-Main Blog component page.
-Handles data fetching, context and lightbox state.
-*/
 const Blog = () => (
   <SectionWrapper
     headerData={{
