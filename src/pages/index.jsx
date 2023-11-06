@@ -3,7 +3,7 @@ import Hero from 'root/src/partials/hero'
 import About from 'root/src/partials/about'
 import Services from 'root/src/partials/services'
 import Hire from 'root/src/partials/hire'
-import Blog from 'root/src/pages/blog'
+import Blog from 'root/src/partials/blog'
 import Contact from 'root/src/partials/contact'
 import Footer from 'root/src/partials/footer'
 
