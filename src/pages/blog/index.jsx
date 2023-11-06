@@ -1,8 +1,14 @@
-import { useState } from 'react'
+/*
+This is the Blog section
+It retrieves blog post data from the MDX files and passes it through context to other components
+It also handles the lightbox state and dispatching actions
+*/
+
+import { useContext, createContext, useState } from 'react'
 import SectionWrapper from 'root/src/components/section-wrapper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
-import Link from 'next/link'
+// import { css } from '@emotion/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Card, Col, Row } from 'react-bootstrap'
@@ -11,9 +17,24 @@ import { cx } from '@emotion/css'
 import dayjs from 'dayjs'
 import styled from './style'
 
+// Define where the MDX files are located
+export const BlogDataPath = 'src/partials/blog/data/item-1.mdx'
+
+// Create a Context for passing data between components
+const Context = createContext({})
+
+// Renders a preview card for each blog post
 const Post = ({ data }) => {
+  const { dispatch } = useContext(Context)
+
+  // Populates the data state with content, causing the lightbox to show
+  const clickEvent = () => {
+    dispatch({ type: 'data', data })
+  }
+
   // Destructure passed data
-  const { title, date, tags, summary, imageUrl, slug } = data
+  const { title, date, tags, summary, imageUrl } = data
+  // const thumbnailObj = data.scope.frontmatter.processedImages.thumbnail[0]
 
   // Populates the blog post card with passed tags
   const tagsToText = (array) => {
@@ -39,32 +60,32 @@ const Post = ({ data }) => {
 
   return (
     <Card css={styled.Post}>
-      <span className='_image-wrapper'>
-        <Link href={`/blog/${slug}`} rel='preload'>
-          <Image
-            className='card-img-top'
-            style={{
-              width: '100%',
-              objectFit: 'cover',
-            }}
-            fill
-            sizes='
+      {/* Blog post card image */}
+      <span onClick={clickEvent} className='_image-wrapper'>
+        <Image
+          className='card-img-top'
+          style={{
+            width: '100%',
+            objectFit: 'cover',
+          }}
+          fill
+          sizes='
             (max-width: 767.98px) 100vw,
             (min-width: 768px) and (max-width: 991.98px) 50vw,
             (min-width: 992px) 33.33vw
           '
-            placeholder='blur'
-            blurDataURL={imageUrl}
-            src={imageUrl}
-            alt='Blog post thumbnail'
-          ></Image>
-          <span className='_date'>{dateToText(date)}</span>
-        </Link>
+          placeholder='blur'
+          blurDataURL={imageUrl}
+          src={imageUrl}
+          alt='Blog post thumbnail'
+        ></Image>
+        <span className='_date'>{dateToText(date)}</span>
       </span>
+      {/* Blog post card body */}
       <Card.Body className='_content'>
-        <Link href={`/blog/${slug}`} rel='preload'>
-          <Card.Title className='_title'>{title}</Card.Title>
-        </Link>
+        <Card.Title onClick={clickEvent} className='_title'>
+          {title}
+        </Card.Title>
         <Card.Text className='_summary'>{summary}</Card.Text>
         <div className='_tags'>
           <span className='_key'>Tags: </span>
