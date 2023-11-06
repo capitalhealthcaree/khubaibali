@@ -4,7 +4,7 @@ It retrieves blog post data from the MDX files and passes it through context to 
 It also handles the lightbox state and dispatching actions
 */
 
-import { useContext, createContext, useReducer, useState } from 'react'
+import { createContext, useReducer, useState } from 'react'
 import SectionWrapper from 'root/src/components/section-wrapper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
@@ -26,12 +26,7 @@ const Context = createContext({})
 
 // Renders a preview card for each blog post
 const Post = ({ data }) => {
-  const { dispatch } = useContext(Context)
-
   // Populates the data state with content, causing the lightbox to show
-  const clickEvent = () => {
-    dispatch({ type: 'data', data })
-  }
 
   // Destructure passed data
   const { title, date, tags, summary, imageUrl } = data
@@ -61,7 +56,7 @@ const Post = ({ data }) => {
   return (
     <Card css={styled.Post}>
       {/* Blog post card image */}
-      <span onClick={clickEvent} className='_image-wrapper'>
+      <span className='_image-wrapper'>
         <Image
           className='card-img-top'
           style={{
@@ -81,9 +76,7 @@ const Post = ({ data }) => {
       </span>
       {/* Blog post card body */}
       <Card.Body className='_content'>
-        <Card.Title onClick={clickEvent} className='_title'>
-          {title}
-        </Card.Title>
+        <Card.Title className='_title'>{title}</Card.Title>
         <Card.Text className='_summary'>{summary}</Card.Text>
         <div className='_tags'>
           <span className='_key'>Tags: </span>
