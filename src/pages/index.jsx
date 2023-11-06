@@ -8,14 +8,14 @@ import About from 'root/src/partials/about'
 import Services from 'root/src/partials/services'
 import Hire from 'root/src/partials/hire'
 import Portfolio, { PortfolioDataPath } from 'root/src/partials/portfolio'
-import Blog, { BlogDataPath } from 'root/src/partials/blog'
+import Blog from 'root/src/partials/blog'
 import Contact from 'root/src/partials/contact'
 import Footer from 'root/src/partials/footer'
 import parseAllMdx from 'root/src/lib/parseAllMdx'
 import Metadata from 'root/src/metadata'
 import Testimonials, { testimonialsDataPath } from '../partials/testimonials'
 
-const HomeVideo = ({ portfolioData, testimonialsData, blogData }) => (
+const HomeVideo = ({ portfolioData, testimonialsData }) => (
   /* Wrap all sections within a scroll-wrapper that adds a functional navbar/sidebar feature */
   <ScrollWrapper>
     {/* Include website metadata */}
@@ -30,7 +30,7 @@ const HomeVideo = ({ portfolioData, testimonialsData, blogData }) => (
     <Hire id='hire' />
     <Portfolio nav='Portfolio' id='portfolio' data={portfolioData} />
     <Testimonials nav='Clients' id='testimonials' data={testimonialsData} />
-    <Blog nav='Blog' id='blog' data={blogData} />
+    <Blog nav='Blog' id='blog' />
     <Contact nav='Contact' id='contact' />
     <Footer id='footer' />
   </ScrollWrapper>
@@ -48,6 +48,5 @@ export const getStaticProps = async () => ({
   props: {
     portfolioData: await parseAllMdx(PortfolioDataPath),
     testimonialsData: await parseAllMdx(testimonialsDataPath),
-    blogData: await parseAllMdx(BlogDataPath),
   },
 })
