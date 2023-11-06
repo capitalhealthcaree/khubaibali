@@ -221,7 +221,6 @@ const Blog = () => (
   >
     <Row>
       <Col xs='12'>
-        {/* Provide context */}
         <PostsList />
       </Col>
     </Row>
