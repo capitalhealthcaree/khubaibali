@@ -1,5 +1,5 @@
 /*
-This is the home page but with just an image background for the Hero section
+This is the home page but with a video background for the Hero section
 */
 
 import ScrollWrapper from 'root/src/components/scroll-wrapper'
@@ -8,21 +8,21 @@ import About from 'root/src/partials/about'
 import Services from 'root/src/partials/services'
 import Hire from 'root/src/partials/hire'
 import Portfolio, { PortfolioDataPath } from 'root/src/partials/portfolio'
-import Blog, { BlogDataPath } from 'root/src/partials/blog'
+import Blog from 'root/src/pages/blog'
 import Contact from 'root/src/partials/contact'
 import Footer from 'root/src/partials/footer'
 import parseAllMdx from 'root/src/lib/parseAllMdx'
 import Metadata from 'root/src/metadata'
 import Testimonials, { testimonialsDataPath } from '../partials/testimonials'
 
-const HomeImage = ({ portfolioData, testimonialsData, blogData }) => (
+const HomeVideo = ({ portfolioData, testimonialsData, blogData }) => (
   /* Wrap all sections within a scroll-wrapper that adds a functional navbar/sidebar feature */
   <ScrollWrapper>
     {/* Include website metadata */}
     <Metadata />
 
-    {/* Hero section with an image background */}
-    <Hero nav='Home' id='home' variant='image' />
+    {/* Hero section with a video background */}
+    <Hero nav='Home' id='home' variant='video' />
 
     {/* Include the rest of sections, some with passed MDX data */}
     <About nav='About' id='about' />
@@ -36,7 +36,7 @@ const HomeImage = ({ portfolioData, testimonialsData, blogData }) => (
   </ScrollWrapper>
 )
 
-export default HomeImage
+export default HomeVideo
 
 /*
 This is a special Next.js function that allows fetching data
@@ -48,6 +48,5 @@ export const getStaticProps = async () => ({
   props: {
     portfolioData: await parseAllMdx(PortfolioDataPath),
     testimonialsData: await parseAllMdx(testimonialsDataPath),
-    blogData: await parseAllMdx(BlogDataPath),
   },
 })
