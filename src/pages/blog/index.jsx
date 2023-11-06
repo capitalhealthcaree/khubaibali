@@ -17,9 +17,6 @@ import { cx } from '@emotion/css'
 import dayjs from 'dayjs'
 import styled from './style'
 
-// Define where the MDX files are located
-export const BlogDataPath = 'src/partials/blog/data/item-1.mdx'
-
 // Create a Context for passing data between components
 const Context = createContext({})
 

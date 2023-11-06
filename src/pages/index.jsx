@@ -7,14 +7,14 @@ import Hero from 'root/src/partials/hero'
 import About from 'root/src/partials/about'
 import Services from 'root/src/partials/services'
 import Hire from 'root/src/partials/hire'
-import Blog, { BlogDataPath } from 'root/src/partials/blog'
+import Blog from 'root/src/partials/blog'
 import Contact from 'root/src/partials/contact'
 import Footer from 'root/src/partials/footer'
 import parseAllMdx from 'root/src/lib/parseAllMdx'
 import Metadata from 'root/src/metadata'
 import Testimonials, { testimonialsDataPath } from '../partials/testimonials'
 
-const HomeVideo = ({ testimonialsData, blogData }) => (
+const HomeVideo = ({ testimonialsData }) => (
   /* Wrap all sections within a scroll-wrapper that adds a functional navbar/sidebar feature */
   <ScrollWrapper>
     {/* Include website metadata */}
@@ -28,7 +28,7 @@ const HomeVideo = ({ testimonialsData, blogData }) => (
     <Services nav='Services' id='services' />
     <Hire id='hire' />
     <Testimonials nav='Clients' id='testimonials' data={testimonialsData} />
-    <Blog nav='Blog' id='blog' data={blogData} />
+    <Blog nav='Blog' id='blog' />
     <Contact nav='Contact' id='contact' />
     <Footer id='footer' />
   </ScrollWrapper>
@@ -45,6 +45,5 @@ Read more: https://nextjs.org/docs/pages/building-your-application/data-fetching
 export const getStaticProps = async () => ({
   props: {
     testimonialsData: await parseAllMdx(testimonialsDataPath),
-    blogData: await parseAllMdx(BlogDataPath),
   },
 })
