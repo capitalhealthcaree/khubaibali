@@ -8,7 +8,7 @@ import About from 'root/src/partials/about'
 import Services from 'root/src/partials/services'
 import Hire from 'root/src/partials/hire'
 import Portfolio, { PortfolioDataPath } from 'root/src/partials/portfolio'
-import Blog from 'root/src/pages/blog'
+import Blog, { BlogDataPath } from 'root/src/partials/blog'
 import Contact from 'root/src/partials/contact'
 import Footer from 'root/src/partials/footer'
 import parseAllMdx from 'root/src/lib/parseAllMdx'
@@ -48,5 +48,6 @@ export const getStaticProps = async () => ({
   props: {
     portfolioData: await parseAllMdx(PortfolioDataPath),
     testimonialsData: await parseAllMdx(testimonialsDataPath),
+    blogData: await parseAllMdx(BlogDataPath),
   },
 })
