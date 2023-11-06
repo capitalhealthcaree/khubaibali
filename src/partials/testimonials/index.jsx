@@ -10,7 +10,7 @@ import { Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import MdxRenderer from 'root/src/components/mdx-renderer'
+// import MdxRenderer from 'root/src/components/mdx-renderer'
 import styled from './style'
 
 // Define where the MDX files are located
@@ -22,14 +22,15 @@ const SingleTestimonial = (props) => {
   return (
     <div css={styled.Testimonial}>
       {/* Icon */}
-      <svg
-        className='_icon'
-        xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 512 512'
-      >
-        <path d='M96.4 416h77.1l50.9-96.6V96h-160v223.4h77.1L96.4 416zm224 0h77.1l50-96.6V96H288.4v223.4h82l-50 96.6z' />
-      </svg>
-
+      <div>
+        <svg
+          className='_icon'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 512 512'
+        >
+          <path d='M96.4 416h77.1l50.9-96.6V96h-160v223.4h77.1L96.4 416zm224 0h77.1l50-96.6V96H288.4v223.4h82l-50 96.6z' />
+        </svg>
+      </div>
       {/* Message */}
       {message}
 
@@ -46,14 +47,29 @@ const SingleTestimonial = (props) => {
 const Testimonials = (props) => {
   // Destructure props
   const { data, ...otherProps } = props
-
+  const testmonial = [
+    {
+      clientName: 'ali',
+      avatar:
+        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fhip-pain-from-running.webp%3Falt%3Dmedia%26token%3Dddbf3d34-75b6-42c7-a20c-16f688f7a2f8&w=1080&q=75',
+      message:
+        'Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.',
+    },
+    {
+      clientName: 'ali2',
+      avatar:
+        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fspine-surgeons.webp%3Falt%3Dmedia%26token%3D2126c1b8-b7f5-45d3-a8a2-600640a5a50e&w=640&q=75',
+      message:
+        'Daniel did an excellent creative job. Quick and professional. Highly recommended, and will definitely work with him again.',
+    },
+  ]
   return (
     <SectionWrapper
       css={styled.Testimonials}
       altBg={true}
       headerData={{
         title: 'Testimonials',
-        description: 'What my clients think about me',
+        description: '',
       }}
       {...otherProps}
     >
@@ -79,23 +95,14 @@ const Testimonials = (props) => {
           }}
         >
           {/* Map over MDX files to generate slides */}
-          {data.map((mdxItem, i) => {
-            // Render MDX content
-            const TestimonialMessage = (
-              <MdxRenderer serializedSource={mdxItem} />
-            )
-
-            // Get avatar object
-            const avatarObj =
-              mdxItem.scope.frontmatter.processedImages.avatar[0]
-
+          {testmonial.map((item, i) => {
             // Render avatar image
             const AvatarImage = (
               <div style={{ overflow: 'hidden' }}>
                 <Image
-                  src={avatarObj.url}
-                  placeholder='blur'
-                  blurDataURL={avatarObj.blurData}
+                  src={item.avatar}
+                  // placeholder='blur'
+                  // blurDataURL={item.avatar}
                   alt='Client avatar'
                   className='_avatar'
                   sizes='56px'
@@ -109,8 +116,8 @@ const Testimonials = (props) => {
             return (
               <SwiperSlide key={i}>
                 <SingleTestimonial
-                  clientName={mdxItem.frontmatter.name}
-                  message={TestimonialMessage}
+                  clientName={item.clientName}
+                  message={item.message}
                   avatar={AvatarImage}
                 />
               </SwiperSlide>
