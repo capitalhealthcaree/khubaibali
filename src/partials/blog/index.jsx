@@ -6,33 +6,33 @@ import Link from 'next/link'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Card, Col, Row } from 'react-bootstrap'
-import { capitalizeFirstLetter } from 'root/utils'
+// import { capitalizeFirstLetter } from 'root/utils'
 import { cx } from '@emotion/css'
 import dayjs from 'dayjs'
 import styled from './style'
 
 const Post = ({ data }) => {
   // Destructure passed data
-  const { title, date, tags, summary, imageUrl, slug } = data
+  const { title, date, summary, imageUrl, slug } = data
 
   // Populates the blog post card with passed tags
-  const tagsToText = (array) => {
-    // Capitalizes first letter of each tag
-    const treatedArray = array.map((element) => capitalizeFirstLetter(element))
+  // const tagsToText = (array) => {
+  //   // Capitalizes first letter of each tag
+  //   const treatedArray = array.map((element) => capitalizeFirstLetter(element))
 
-    // Checks length for singular/plural formatting
-    if (treatedArray.length === 1)
-      return <a className='link'>{treatedArray[0]}</a>
+  //   // Checks length for singular/plural formatting
+  //   if (treatedArray.length === 1)
+  //     return <a className='link'>{treatedArray[0]}</a>
 
-    // Joins tags for plural display
-    return treatedArray.reduce((prev, curr) => (
-      <>
-        <span className='_tag'>{prev}</span>
-        <span className='_delimiter'>/</span>
-        <span className='_tag'>{curr}</span>
-      </>
-    ))
-  }
+  //   // Joins tags for plural display
+  //   return treatedArray.reduce((prev, curr) => (
+  //     <>
+  //       <span className='_tag'>{prev}</span>
+  //       <span className='_delimiter'>/</span>
+  //       <span className='_tag'>{curr}</span>
+  //     </>
+  //   ))
+  // }
 
   // Format passed plain text date
   const dateToText = (dateInput) => dayjs(dateInput).format('MMMM D, YYYY')
@@ -68,7 +68,7 @@ const Post = ({ data }) => {
         <Card.Text className='_summary'>{summary}</Card.Text>
         <div className='_tags'>
           <span className='_key'>Tags: </span>
-          <span className='_list'>{tagsToText(tags)}</span>
+          {/* <span className='_list'>{tagsToText(tags)}</span> */}
         </div>
       </Card.Body>
     </Card>
@@ -221,7 +221,6 @@ const Blog = () => (
       description: 'Check out my latest blog posts',
     }}
     altBg={false}
-    // {...otherProps}
   >
     <Row>
       <Col xs='12'>
