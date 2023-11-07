@@ -1,26 +1,15 @@
-/*
-This is the Blog section
-It retrieves blog post data from the MDX files and passes it through context to other components
-It also handles the lightbox state and dispatching actions
-*/
-
 import { useContext, createContext, useReducer, useState } from 'react'
 import SectionWrapper from 'root/src/components/section-wrapper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
-// import { css } from '@emotion/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Card, Col, Container, Row } from 'react-bootstrap'
-// import MdxRenderer from 'root/src/components/mdx-renderer'
 import { capitalizeFirstLetter } from 'root/utils'
 import { cx } from '@emotion/css'
 import dayjs from 'dayjs'
 import Lightbox from 'root/src/components/lightbox'
 import styled from './style'
-
-// Define where the MDX files are located
-export const BlogDataPath = 'src/partials/blog/data/*.mdx'
 
 // Create a Context for passing data between components
 const Context = createContext({})
@@ -232,43 +221,6 @@ const PostLightbox = () => {
   // Get state and dispatch from context
   const { state, dispatch } = useContext(Context)
 
-  /*
-  Defines components passed to the MdxRenderer
-  and can be called from within the MDX file
-  */
-  // const components = {
-  //   // Layout component for lightbox
-  //   PostLightboxLayout,
-
-  //   // Thumbnail component that renders image
-  //   LightboxThumbnail: () => (
-  // <Image
-  //   className='_post-thumbnail'
-  //   src={state.data.scope.frontmatter.processedImages.thumbnail[0].url}
-  //   css={css`
-  //     width: ${state.data.scope.frontmatter.processedImages.thumbnail[0]
-  //       .metadata.width}px;
-  //   `}
-  //   width={
-  //     state.data.scope.frontmatter.processedImages.thumbnail[0].metadata
-  //       .width
-  //   }
-  //   height={
-  //     state.data.scope.frontmatter.processedImages.thumbnail[0].metadata
-  //       .height
-  //   }
-  //   placeholder='blur'
-  //   blurDataURL={
-  //     state.data.scope.frontmatter.processedImages.thumbnail[0].blurData
-  //   }
-  //   sizes='
-  //     (max-width: 991.98px) 100vw,
-  //     (min-width: 992px) 75vw
-  //   '
-  //   alt='Blog post thumbnail'
-  // />
-  //   ),
-  // }
   return (
     <Lightbox
       css={styled.PostLightbox}
@@ -376,7 +328,7 @@ const Blog = (props) => {
   return (
     <SectionWrapper
       headerData={{
-        title: 'My Blog',
+        title: 'My Blogs',
         description: 'Check out my latest blog posts',
       }}
       altBg={false}
