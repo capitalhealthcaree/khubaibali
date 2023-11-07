@@ -1,5 +1,5 @@
-import 'swiper/css'
-import 'swiper/css/pagination'
+// import 'swiper/css'
+// import 'swiper/css/pagination'
 import { Col, Container, Row, Button } from 'react-bootstrap'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
