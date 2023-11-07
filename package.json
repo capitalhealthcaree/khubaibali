@@ -3,6 +3,7 @@
   "description": "The Next.js version of CodeX",
   "version": "1.0.0",
   "license": "Themeforest Standard License",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",

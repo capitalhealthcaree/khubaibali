@@ -1,5 +1,5 @@
 /*
-This is the home page but with just an image background for the Hero section
+This is the home page but with a "lines" particles effect for the Hero section
 */
 
 import ScrollWrapper from 'root/src/components/scroll-wrapper'
@@ -15,14 +15,14 @@ import parseAllMdx from 'root/src/lib/parseAllMdx'
 import Metadata from 'root/src/metadata'
 import Testimonials, { testimonialsDataPath } from '../partials/testimonials'
 
-const HomeImage = ({ portfolioData, testimonialsData, blogData }) => (
+const HomeLines = ({ portfolioData, testimonialsData, blogData }) => (
   /* Wrap all sections within a scroll-wrapper that adds a functional navbar/sidebar feature */
   <ScrollWrapper>
     {/* Include website metadata */}
     <Metadata />
 
-    {/* Hero section with an image background */}
-    <Hero nav='Home' id='home' variant='image' />
+    {/* Hero section with "lines" particles variant */}
+    <Hero nav='Home' id='home' variant='particles' preset='lines' />
 
     {/* Include the rest of sections, some with passed MDX data */}
     <About nav='About' id='about' />
@@ -36,7 +36,7 @@ const HomeImage = ({ portfolioData, testimonialsData, blogData }) => (
   </ScrollWrapper>
 )
 
-export default HomeImage
+export default HomeLines
 
 /*
 This is a special Next.js function that allows fetching data
