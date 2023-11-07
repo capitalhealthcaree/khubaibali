@@ -7,6 +7,7 @@ import Publication from 'root/src/partials/publications'
 import Testimonial from 'root/src/partials/testimonials'
 import Blog from 'root/src/partials/blog'
 import Contact from 'root/src/partials/contact'
+import Scholarly from 'root/src/partials/scholarly'
 import Footer from 'root/src/partials/footer'
 import Metadata from 'root/src/metadata'
 
@@ -17,6 +18,7 @@ const HomeVideo = () => (
     <About nav='About' id='about' />
     <Services nav='expertise' id='expertise' />
     <Hire id='hire' />
+    <Scholarly nav='Scholarly Work' id='scholarly' />
     <Publication nav='Boooks' id='publication' />
     <Blog nav='Blog' id='blog' />
     <Testimonial nav='Testimonial' id='testimonial' />
