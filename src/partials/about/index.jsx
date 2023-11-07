@@ -4,7 +4,6 @@ import Button from 'root/src/components/button'
 import aboutImg from 'root/public/partials/about/picture.jpg'
 import Image from 'next/image'
 import styled from './style'
-import api from '../../../utils/api'
 
 const About = (props) => (
   <SectionWrapper
@@ -64,17 +63,3 @@ const About = (props) => (
 )
 
 export default About
-
-export const getServerSideProps = async () => {
-  const posts = await api.get('getAbout')
-  console.log('-------------------------------', posts)
-  const data = await posts.data.data
-  // const totalPage = await posts.data.totalPages
-
-  return {
-    props: {
-      item: data,
-      // totalPage,
-    },
-  }
-}

@@ -10,6 +10,7 @@ import Contact from 'root/src/partials/contact'
 import Scholarly from 'root/src/partials/scholarly'
 import Footer from 'root/src/partials/footer'
 import Metadata from 'root/src/metadata'
+import api from '../../utils/api'
 
 const HomeVideo = () => (
   <ScrollWrapper>
@@ -28,3 +29,17 @@ const HomeVideo = () => (
 )
 
 export default HomeVideo
+
+export const getServerSideProps = async () => {
+  const posts = await api.get('getAbout')
+  console.log('-------------------------------', posts)
+  const data = await posts.data.data
+  // const totalPage = await posts.data.totalPages
+
+  return {
+    props: {
+      item: data,
+      // totalPage,
+    },
+  }
+}
