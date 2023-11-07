@@ -8,11 +8,11 @@ import { useContext, createContext, useReducer, useState } from 'react'
 import SectionWrapper from 'root/src/components/section-wrapper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
-import { css } from '@emotion/react'
+// import { css } from '@emotion/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Card, Col, Container, Row } from 'react-bootstrap'
-import MdxRenderer from 'root/src/components/mdx-renderer'
+// import MdxRenderer from 'root/src/components/mdx-renderer'
 import { capitalizeFirstLetter } from 'root/utils'
 import { cx } from '@emotion/css'
 import dayjs from 'dayjs'
@@ -28,15 +28,13 @@ const Context = createContext({})
 // Renders a preview card for each blog post
 const Post = ({ data }) => {
   const { dispatch } = useContext(Context)
-
   // Populates the data state with content, causing the lightbox to show
   const clickEvent = () => {
     dispatch({ type: 'data', data })
   }
 
   // Destructure passed data
-  const { title, date, tags, summary } = data.scope.frontmatter
-  const thumbnailObj = data.scope.frontmatter.processedImages.thumbnail[0]
+  const { title, date, tags, summary, images } = data
 
   // Populates the blog post card with passed tags
   const tagsToText = (array) => {
@@ -76,9 +74,7 @@ const Post = ({ data }) => {
             (min-width: 768px) and (max-width: 991.98px) 50vw,
             (min-width: 992px) 33.33vw
           '
-          placeholder='blur'
-          blurDataURL={thumbnailObj.blurData}
-          src={thumbnailObj.url}
+          src={images}
           alt='Blog post thumbnail'
         ></Image>
         <span className='_date'>{dateToText(date)}</span>
@@ -197,9 +193,8 @@ Renders title, summary and MDX content
 const PostLightboxLayout = (props) => {
   // Get context from Context provider
   const { state } = useContext(Context)
-
   // Destructure Frontmatter data
-  const { title, summary } = state.data.scope.frontmatter
+  const { title, summary, images } = state.data
 
   // Destructure children (MDX content)
   const { children } = props
@@ -211,6 +206,17 @@ const PostLightboxLayout = (props) => {
         <div className='_post-wrapper'>
           <h1 className='_title'>{title}</h1>
           <p className='_summary'>{summary}</p>
+          <Image
+            className='_post-thumbnail'
+            src={images}
+            width={100}
+            height={100}
+            sizes='
+          (max-width: 991.98px) 100vw,
+          (min-width: 992px) 75vw
+        '
+            alt='Blog post thumbnail'
+          />
           <div className='_content'>{children}</div>
         </div>
       </Col>
@@ -230,40 +236,39 @@ const PostLightbox = () => {
   Defines components passed to the MdxRenderer
   and can be called from within the MDX file
   */
-  const components = {
-    // Layout component for lightbox
-    PostLightboxLayout,
+  // const components = {
+  //   // Layout component for lightbox
+  //   PostLightboxLayout,
 
-    // Thumbnail component that renders image
-    LightboxThumbnail: () => (
-      <Image
-        className='_post-thumbnail'
-        src={state.data.scope.frontmatter.processedImages.thumbnail[0].url}
-        css={css`
-          width: ${state.data.scope.frontmatter.processedImages.thumbnail[0]
-            .metadata.width}px;
-        `}
-        width={
-          state.data.scope.frontmatter.processedImages.thumbnail[0].metadata
-            .width
-        }
-        height={
-          state.data.scope.frontmatter.processedImages.thumbnail[0].metadata
-            .height
-        }
-        placeholder='blur'
-        blurDataURL={
-          state.data.scope.frontmatter.processedImages.thumbnail[0].blurData
-        }
-        sizes='
-          (max-width: 991.98px) 100vw,
-          (min-width: 992px) 75vw
-        '
-        alt='Blog post thumbnail'
-      />
-    ),
-  }
-
+  //   // Thumbnail component that renders image
+  //   LightboxThumbnail: () => (
+  // <Image
+  //   className='_post-thumbnail'
+  //   src={state.data.scope.frontmatter.processedImages.thumbnail[0].url}
+  //   css={css`
+  //     width: ${state.data.scope.frontmatter.processedImages.thumbnail[0]
+  //       .metadata.width}px;
+  //   `}
+  //   width={
+  //     state.data.scope.frontmatter.processedImages.thumbnail[0].metadata
+  //       .width
+  //   }
+  //   height={
+  //     state.data.scope.frontmatter.processedImages.thumbnail[0].metadata
+  //       .height
+  //   }
+  //   placeholder='blur'
+  //   blurDataURL={
+  //     state.data.scope.frontmatter.processedImages.thumbnail[0].blurData
+  //   }
+  //   sizes='
+  //     (max-width: 991.98px) 100vw,
+  //     (min-width: 992px) 75vw
+  //   '
+  //   alt='Blog post thumbnail'
+  // />
+  //   ),
+  // }
   return (
     <Lightbox
       css={styled.PostLightbox}
@@ -277,7 +282,7 @@ const PostLightbox = () => {
         {/* Check for post data */}
         {state.data && (
           // Render MDX content
-          <MdxRenderer serializedSource={state.data} components={components} />
+          <PostLightboxLayout />
         )}
       </Container>
     </Lightbox>
@@ -317,10 +322,59 @@ const Blog = (props) => {
 
   // State and dispatch from useReducer
   const [state, dispatch] = useReducer(stateReducer, initialState)
-
+  const fetchedDatas = [
+    {
+      title: 'sdas00',
+      tags: ['ReactJs', 'NextJs'],
+      summary: 'It is very easy',
+      slug: 'reactjs-is-happy',
+      images:
+        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fspine-surgeons.webp%3Falt%3Dmedia%26token%3D2126c1b8-b7f5-45d3-a8a2-600640a5a50e&w=640&q=75',
+    },
+    {
+      title: 'sdas00',
+      tags: ['ReactJs', 'NextJs'],
+      summary: 'It is very easy',
+      slug: 'reactjs-is-happy',
+      images:
+        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fshoulder-sprain.webp%3Falt%3Dmedia%26token%3D858f06fd-76f1-4982-92ee-cc878169fca0&w=640&q=75',
+    },
+    {
+      title: 'sdas00',
+      tags: ['ReactJs', 'NextJs'],
+      summary: 'It is very easy',
+      slug: 'reactjs-is-happy',
+      images:
+        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fcomminuted-fracture.webp%3Falt%3Dmedia%26token%3D277bef01-2138-4421-9c94-dcf3429fd625&w=640&q=75',
+    },
+    {
+      title: 'sdas00',
+      tags: ['ReactJs', 'NextJs'],
+      summary: 'It is very easy',
+      slug: 'reactjs-is-happy',
+      images:
+        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Frhizotomy-procedure.webp%3Falt%3Dmedia%26token%3D3c781c09-b99d-450a-b2d8-d1b3bb833c7f&w=640&q=75',
+    },
+    {
+      title: 'sdas00',
+      tags: ['ReactJs', 'NextJs'],
+      summary: 'It is very easy',
+      slug: 'reactjs-is-happy',
+      images:
+        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Farthritis-dr-near-me.webp%3Falt%3Dmedia%26token%3Ddcffec22-918f-46ae-9b17-d74894069f57&w=640&q=75',
+    },
+    {
+      title: 'sdas00',
+      tags: ['ReactJs', 'NextJs'],
+      summary: 'It is very easy',
+      slug: 'reactjs-is-happy',
+      images:
+        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fshoulder-rom.webp%3Falt%3Dmedia%26token%3D27657c35-ae5f-4585-84b3-b8e7067bfae6&w=640&q=75',
+    },
+  ]
   // Context data
   const contextData = {
-    fetchedData: data,
+    fetchedData: fetchedDatas,
     state,
     dispatch,
   }
