@@ -3,6 +3,8 @@ import Hero from 'root/src/partials/hero'
 import About from 'root/src/partials/about'
 import Services from 'root/src/partials/services'
 import Hire from 'root/src/partials/hire'
+import Publication from 'root/src/partials/publications'
+import Testimonial from 'root/src/partials/testimonials'
 import Blog from 'root/src/partials/blog'
 import Contact from 'root/src/partials/contact'
 import Footer from 'root/src/partials/footer'
@@ -13,9 +15,11 @@ const HomeVideo = () => (
     <Metadata />
     <Hero nav='Home' id='home' variant='video' />
     <About nav='About' id='about' />
-    <Services nav='Services' id='services' />
+    <Services nav='expertise' id='expertise' />
     <Hire id='hire' />
+    <Publication nav='Boooks' id='publication' />
     <Blog nav='Blog' id='blog' />
+    <Testimonial nav='Testimonial' id='testimonial' />
     <Contact nav='Contact' id='contact' />
     <Footer id='footer' />
   </ScrollWrapper>
