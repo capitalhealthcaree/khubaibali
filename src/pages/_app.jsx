@@ -1,10 +1,3 @@
-/*
-_app.jsx is a special Next.js file that serves as the entry point for the application
-It is responsible for initializing the pages
-Read more: https://nextjs.org/docs/pages/building-your-application/routing/custom-app
-*/
-
-/* eslint-disable @next/next/no-page-custom-font */
 import 'src/styles/bootstrap/index.scss'
 import 'simplebar-react/dist/simplebar.min.css'
 import styled from 'root/src/styles/global'
@@ -12,7 +5,6 @@ import { useState, useEffect } from 'react'
 import { css, Global } from '@emotion/react'
 import Preloader from '../components/preloader'
 
-// Defines elements to be included in the <head>
 export const HeadContent = () => (
   <>
     {/* Google Fonts */}
