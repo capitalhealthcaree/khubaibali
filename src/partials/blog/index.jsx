@@ -327,7 +327,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fspine-surgeons.webp%3Falt%3Dmedia%26token%3D2126c1b8-b7f5-45d3-a8a2-600640a5a50e&w=640&q=75',
     },
@@ -335,7 +334,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fshoulder-sprain.webp%3Falt%3Dmedia%26token%3D858f06fd-76f1-4982-92ee-cc878169fca0&w=640&q=75',
     },
@@ -343,7 +341,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fcomminuted-fracture.webp%3Falt%3Dmedia%26token%3D277bef01-2138-4421-9c94-dcf3429fd625&w=640&q=75',
     },
@@ -351,7 +348,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Frhizotomy-procedure.webp%3Falt%3Dmedia%26token%3D3c781c09-b99d-450a-b2d8-d1b3bb833c7f&w=640&q=75',
     },
@@ -359,7 +355,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Farthritis-dr-near-me.webp%3Falt%3Dmedia%26token%3Ddcffec22-918f-46ae-9b17-d74894069f57&w=640&q=75',
     },
@@ -367,7 +362,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fshoulder-rom.webp%3Falt%3Dmedia%26token%3D27657c35-ae5f-4585-84b3-b8e7067bfae6&w=640&q=75',
     },
