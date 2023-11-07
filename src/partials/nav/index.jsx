@@ -1,10 +1,3 @@
-/*
-This component defines a mobile navbar and sidebar
-The mobile navbar is designed for small screens, while the sidebar is intended for larger screens
-Both components function and behave similarly
-This component is consumed by the ScrollWrapper component, which populates it with data
-*/
-
 import React, { useState, useRef, useEffect } from 'react'
 import { Nav as BSNav, Navbar } from 'react-bootstrap'
 import SimpleBar from 'simplebar-react'
@@ -91,8 +84,8 @@ const Sidebar = ({ children }) => {
   // Data to populate sidebar
   const data = {
     toggler: 'Menu',
-    status: 'Available for work',
-    author: 'Alex Smith',
+    status: 'I am a Pharmacist',
+    author: 'Khubaib Ali',
   }
 
   return (

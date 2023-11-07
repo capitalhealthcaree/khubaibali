@@ -35,7 +35,7 @@ const Hero = (props) => {
 
   // Data for typed effect
   const data = {
-    roles: ['Developer', 'Designer', 'Freelancer'],
+    roles: ['Pharmacist', 'Clinical Researcher', 'Medical Writer'],
   }
 
   // UseEffect to initialize typed plugin
@@ -94,8 +94,8 @@ const Hero = (props) => {
         {/* Text content */}
         <Col xs='12' lg='8' className='text-center'>
           <h1 className='_name'>
-            Alex
-            <span> Smith</span>
+            Khubaib
+            <span> Ali</span>
           </h1>
 
           <h4 className='_headline'>
