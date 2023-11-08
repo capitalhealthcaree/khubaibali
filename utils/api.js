@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'https://khubaibali-apis.vercel.app/'
+const BASE_URL = 'https://khubaib-apis.vercel.app/'
 const config = {
   headers: {
     'Access-Control-Allow-Origin': '*',

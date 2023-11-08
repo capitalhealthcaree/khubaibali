@@ -11,12 +11,14 @@ import Scholarly from 'root/src/partials/scholarly'
 import Footer from 'root/src/partials/footer'
 import Metadata from 'root/src/metadata'
 
-const HomeVideo = () => (
+import api from 'root/utils/api'
+
+const HomeVideo = ({ aboutData, expertiseDtata }) => (
   <ScrollWrapper>
     <Metadata />
     <Hero nav='Home' id='home' variant='video' />
-    <About nav='About Me' id='about' />
-    <Services nav='Expertise' id='expertise' />
+    <About nav='About Me' id='about' aboutData={aboutData} />
+    <Services nav='Expertise' id='expertise' expertiseDtata={expertiseDtata} />
     <Hire id='hire' />
     <Scholarly nav='My Scholarly Work' id='scholarly' />
     <Publication nav='My Books' id='publication' />
@@ -28,3 +30,15 @@ const HomeVideo = () => (
 )
 
 export default HomeVideo
+
+export const getServerSideProps = async () => {
+  const about = await api.get('getAbout/')
+  const expertise = await api.get('getExpertise/')
+
+  return {
+    props: {
+      aboutData: about.data,
+      expertiseDtata: expertise.data,
+    },
+  }
+}
