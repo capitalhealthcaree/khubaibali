@@ -13,14 +13,18 @@ import Metadata from 'root/src/metadata'
 
 import api from 'root/utils/api'
 
-const HomeVideo = ({ aboutData, expertiseDtata }) => (
+const HomeVideo = ({ aboutData, expertiseDtata, scholarlyWorkDtata }) => (
   <ScrollWrapper>
     <Metadata />
     <Hero nav='Home' id='home' variant='video' />
     <About nav='About Me' id='about' aboutData={aboutData} />
     <Services nav='Expertise' id='expertise' expertiseDtata={expertiseDtata} />
     <Hire id='hire' />
-    <Scholarly nav='My Scholarly Work' id='scholarly' />
+    <Scholarly
+      nav='My Scholarly Work'
+      id='scholarly'
+      scholarlyWorkDtata={scholarlyWorkDtata}
+    />
     <Publication nav='My Books' id='publication' />
     <Blog nav='My Blogs' id='blog' />
     <Testimonial nav='Testimonials' id='testimonial' />
@@ -34,11 +38,13 @@ export default HomeVideo
 export const getServerSideProps = async () => {
   const about = await api.get('getAbout/')
   const expertise = await api.get('getExpertise/')
+  const scholarlyWork = await api.get('getAllWorks/')
 
   return {
     props: {
       aboutData: about.data,
       expertiseDtata: expertise.data,
+      scholarlyWorkDtata: scholarlyWork.data,
     },
   }
 }
