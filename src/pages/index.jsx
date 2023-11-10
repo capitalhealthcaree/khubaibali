@@ -7,6 +7,7 @@ import Testimonial from 'root/src/partials/testimonial'
 import Blog from 'root/src/partials/blog'
 import Contact from 'root/src/partials/contact'
 import Scholarly from 'root/src/partials/scholarly'
+import Certification from 'root/src/partials/certification'
 import Footer from 'root/src/partials/footer'
 import Metadata from 'root/src/metadata'
 import Book from 'root/src/partials/book'
@@ -19,6 +20,7 @@ const HomeVideo = ({
   blogsDtata,
   booksDtata,
   testmonialDtata,
+  certificationDtata,
 }) => (
   <ScrollWrapper>
     <Metadata />
@@ -36,6 +38,11 @@ const HomeVideo = ({
       scholarlyWorkDtata={scholarlyWorkDtata}
     />
     <Book nav='My Books' id='publication' booksDtata={booksDtata} />
+    <Certification
+      nav='My Certification'
+      id='certification'
+      testmonialDtata={certificationDtata}
+    />
     <Blog nav='My Blogs' id='blog' scholarlyWorkDtata={blogsDtata} />
     <Testimonial
       nav='My Testimonials'
@@ -56,6 +63,7 @@ export const getServerSideProps = async () => {
   const blogs = await api.get('getAllBlogs/')
   const books = await api.get('getAllBooks/')
   const testmonials = await api.get('getAllTestmonials/')
+  const certification = await api.get('getAllCertification/')
 
   return {
     props: {
@@ -65,6 +73,7 @@ export const getServerSideProps = async () => {
       blogsDtata: blogs.data,
       booksDtata: books.data,
       testmonialDtata: testmonials.data,
+      certificationDtata: certification.data,
     },
   }
 }
